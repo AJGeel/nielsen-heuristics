@@ -1,0 +1,271 @@
+:root{
+  --blue-main: #002fb1;
+  --blue-dark: #2d4486;
+}
+
+@keyframes fadeInBottom {
+    from {
+        transform: translateY(5em);
+        opacity: 0;
+        filter: blur(2px);
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+        filter: blur(0px);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        transform: translateX(5em);
+        opacity: 0;
+        filter: blur(2px);
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+        filter: blur(0px);
+    }
+}
+
+
+::selection{
+    background: hsla(230, 100%, 68%, .1);
+}
+
+body{
+    background-color: #eef0f6; /* Fallback for oldschool browsers */
+    background: linear-gradient(#eef0f6, #c9d4f3);
+    background-attachment: fixed;
+    font-family: "Poppins", sans-serif;
+
+    /* animation: fadeIn 1s ease-in-out; */
+}
+
+.wrapper{
+    max-width: 60em;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-start
+}
+
+.wrapper section{
+    margin: 0em 1.5em;
+}
+
+.description{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    padding-top: 3em;
+
+    animation: fadeInRight 750ms ease-in-out;
+
+}
+
+.description h1{
+    line-height: 1.6;
+    font-size: 1.25em;
+    font-weight: 600;
+    margin-bottom: 1em;
+    color: var(--blue-main);
+}
+
+.description h1 svg{
+  transform: translateY(4px);
+  margin-right: 2px;
+  stroke-width: 2.5px;
+}
+
+.description h2{
+    font-weight: 600;
+    margin-bottom: .25em;
+    color: var(--blue-dark);
+}
+
+.description p{
+    line-height: 1.6;
+    color: rgba(0,0,0,.7);
+    margin-bottom: 2em;
+}
+
+.description p.smaller{
+    font-size: .875em;
+}
+
+.description a{
+    color: var(--blue-dark);
+}
+
+.description a:hover{
+  text-decoration: none;
+  color: var(--blue-main);
+}
+
+.description code{
+    font-size: .75em;
+    padding: .2em .4em;
+    margin: 0 .5em;
+    border-radius: 3px;
+    background-color: #fff;
+    color: #274e98;
+
+    transition: background-color .4s ease-in-out, color .4s ease-in-out;
+}
+
+.description code.needs-work:hover{
+    background-color: #ffe5e5;
+    color: #a91a05;
+}
+
+.description code.complete:hover{
+    background-color: #f1f6ff;
+    color: #90abde;
+    text-decoration: line-through;
+}
+
+.checklist{
+    max-width: 50%;
+}
+
+.checklist-item{
+    box-sizing: border-box;
+    margin-top: 3em;
+    background-color: #fff;
+    box-shadow: 0px 0px 13px 0 rgba(82,63,105,.05);
+    border-radius: 4px;
+    width: 30em;
+    border-left: 0px solid #fff;
+
+    transition: box-shadow .4s ease-in-out, background-color .4s ease-in-out, border-left .4s ease-in-out;
+    animation-name: fadeInBottom;
+    animation-duration: 650ms;
+    animation-delay: calc(var(--n) * 100ms);
+    animation-fill-mode: both;
+    animation-timing-function: ease-in-out;
+}
+
+.checklist-item:last-child{
+    margin-bottom: 3em;
+}
+
+.checklist-item:hover{
+    /* transform: translateY(-.5em); */
+    box-shadow: 0px 10px 30px 0 hsla(224, 99%, 35%, .3);
+    cursor: pointer;
+}
+
+.checklist-item:hover .content h2{
+  color: var(--blue-main);
+  border-bottom: 1px solid #cad8ff;
+}
+
+.checklist-item:active{
+  /* transform: translateY(-.25em); */
+  transition: .15s ease-in-out;
+}
+
+.checklist-item .content p{
+    padding: 1.5em;
+    line-height: 1.6;
+    opacity: .8;
+}
+
+.checklist-item .content h2{
+    padding: 1.5em;
+    border-bottom: 1px solid #dee0ed;
+    font-size: 1.25em;
+    font-weight: 600;
+    line-height: 1.25;
+    transition: color .3s ease-in-out, border-bottom .3s ease-in-out;
+}
+
+.checklist-item .content .extra{ /* Not implemented */
+    display: none;
+    padding-top: 0;
+}
+
+.checklist-item .content .extra a{ /* Not implemented */
+    color: #9c051a;
+}
+
+/* Checklist overrides */
+
+.checklist-item.needs-work{
+    background-color: #ffe5e5;
+    border-left: 6px solid #eac3c3;
+}
+
+.checklist-item.needs-work:hover{
+  box-shadow: 0px 10px 30px 0 hsla(0, 99%, 35%, .3);
+}
+
+.checklist-item.needs-work h2{
+    /* !important overrides are used because the :hover selector above has higher specificity, even though we don't want that.*/
+    color: #9c0505 !important;
+    border-bottom: 1px solid #eac3c3 !important;
+}
+
+.checklist-item.needs-work .extra{ /* Not implemented */
+    display: none;
+}
+
+.checklist-item.complete{
+    border-left: 6px solid #dbe4ff;
+    background-color: #f1f6ff;
+}
+
+.checklist-item.complete h2{
+    text-decoration: line-through;
+    color: #90abde !important;
+    border-bottom: 1px solid #d7e5ff !important;
+}
+
+.checklist-item.complete p{
+    /* display: none; */
+    color: #abbee2;
+    text-decoration: line-through;
+}
+
+/* Success modal */
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
