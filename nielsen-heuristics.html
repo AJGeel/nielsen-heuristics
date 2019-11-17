@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Usability Checklist</title>
+<link rel="shortcut icon" type="image/png" href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/ballot-box-with-check_2611.png">
+<link href="https://fonts.googleapis.com/css?family=Poppins&amp;display=swap" rel="stylesheet">
+<link href="https://ajgeel.github.io/mobi-2s/css/reset.css" rel="stylesheet">
+
+<style>
+
+    @keyframes fadeIn {
+        from {
+            transform: translateY(.5em) scale(.99);
+            opacity: 0;
+        }
+
+        to {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+        }
+    }
+
+    ::selection{
+        background: hsla(230, 100%, 68%, .1);
+    }
+
+    body{
+        background-color: #eef0f6;
+        font-family: "Poppins", sans-serif;
+
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    .wrapper{
+        max-width: 60em;
+        margin: 0 auto;
+        display: flex;
+        align-items: flex-start
+    }
+
+    .wrapper section{
+        margin: 0em 1.5em;
+    }
+
+    .description{
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        padding-top: 3em;
+        /* max-height: 100px; */
+    }
+
+    .description h1{
+        line-height: 1.6;
+        font-size: 1.25em;
+        font-weight: 600;
+        margin-bottom: 1em;
+    }
+
+    .description h2{
+        font-weight: 600;
+        margin-bottom: .25em;
+        color: rgba(0,0,0,.7);
+    }
+
+    .description p{
+        line-height: 1.6;
+        color: rgba(0,0,0,.7);
+        margin-bottom: 2em;
+    }
+
+    .description p.smaller{
+        font-size: .875em;
+    }
+
+    .description a{
+        color: #303958;
+    }
+
+    .description code{
+        font-size: .75em;
+        padding: .2em .4em;
+        margin: 0 .5em;
+        border-radius: 3px;
+        background-color: #fff;
+        color: #274e98;
+
+        transition: background-color .4s ease-in-out, color .4s ease-in-out;
+    }
+
+    .description code.needs-work:hover{
+        background-color: #ffe5e5;
+        color: #a91a05;
+    }
+
+    .description code.complete:hover{
+        background-color: #f1f6ff;
+        color: #90abde;
+        text-decoration: line-through;
+    }
+
+    .checklist{
+        max-width: 50%;
+    }
+
+    .checklist-item{
+        box-sizing: border-box;
+        margin-top: 3em;
+        background-color: #fff;
+        box-shadow: 0px 0px 13px 0 rgba(82,63,105,.05);
+        border-radius: 4px;
+        width: 30em;
+        border-left: 0px solid #fff;
+
+        transition: transform .4s ease-in-out, box-shadow .4s ease-in-out, background-color .4s ease-in-out, border-left .4s ease-in-out;
+    }
+
+    .checklist-item:last-child{
+        margin-bottom: 3em;
+    }
+
+    .checklist-item:hover{
+        transform: translateY(-.5em);
+        box-shadow: 0px 10px 50px 0 rgba(82,63,105,.20);
+        cursor: pointer;
+    }
+
+    .checklist-item .content p{
+        padding: 1.5em;
+        line-height: 1.6;
+        opacity: .8;
+    }
+
+    .checklist-item .content h2{
+        padding: 1.5em;
+        border-bottom: 1px solid #dee0ed;
+        font-size: 1.25em;
+        font-weight: 600;
+        line-height: 1.25;
+    }
+
+    .checklist-item .content .extra{ /* Not implemented */
+        display: none;
+        padding-top: 0;
+    }
+
+    .checklist-item .content .extra a{ /* Not implemented */
+        color: #9c051a;
+    }
+
+    /* Checklist overrides */
+
+    .checklist-item.needs-work{
+        background-color: #ffe5e5;
+        border-left: 6px solid #eac3c3;
+    }
+
+    .checklist-item.needs-work h2{
+        color: #9c0505;
+        border-bottom: 1px solid #eac3c3;
+    }
+
+    .checklist-item.needs-work .extra{ /* Not implemented */
+        display: none;
+    }
+
+    .checklist-item.complete{
+        border-left: 6px solid #dbe4ff;
+        background-color: #f1f6ff;
+    }
+
+    .checklist-item.complete h2{
+        text-decoration: line-through;
+        color: #90abde;
+        border-bottom: 1px solid #d7e5ff;
+    }
+
+    .checklist-item.complete p{
+        /* display: none; */
+        color: #abbee2;
+        text-decoration: line-through;
+    }
+
+    /* Success modal */
+
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content/Box */
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto; /* 15% from the top and centered */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%; /* Could be more or less, depending on screen size */
+    }
+
+    /* The Close Button */
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+</style>
+</head>
+<body>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Some text in the Modal..</p>
+        </div>
+    
+    </div>
+
+    <div class="wrapper">
+        <section class="checklist">
+            <article class="checklist-item" id="0">
+                <div class="checkbox"></div>
+                <div class="content">
+                    <h2>#1: Visibility of system status</h2>
+                    <p>The system should always keep users informed about what is going on, through appropriate feedback within reasonable time.</p>
+                    <p class="extra">(Read full article on <a href="#!">visibility of system status</a> and watch 3 min. <a href="#!">video on the visibility heuristic</a>.)</p>
+                </div>
+            </article>
+
+            <article class="checklist-item" id="1">
+                <div class="checkbox"></div>
+                <div class="content">
+                    <h2>#2: Match between the system and the real world</h2>
+                    <p>The system should speak the users' language, with words, phrases and concepts familiar to the user, rather than system-oriented terms. Follow real-world conventions, making information appear in a natural and logical order.</p>
+                </div>
+            </article>
+
+            <article class="checklist-item" id="2">
+                <div class="checkbox"></div>
+                <div class="content">
+                    <h2>#3: User control and freedom</h2>
+                    <p>Users often choose system functions by mistake and will need a clearly marked "emergency exit" to leave the unwanted state without having to go through an extended dialogue. Support undo and redo.</p>
+                </div>
+            </article>
+
+            <article class="checklist-item" id="3">
+                <div class="checkbox"></div>
+                <div class="content">
+                    <h2>#4: Consistency and standards</h2>
+                    <p>Users should not have to wonder whether different words, situations, or actions mean the same thing. Follow platform conventions.</p>
+                </div>
+            </article>
+
+            <article class="checklist-item" id="4">
+                <div class="checkbox"></div>
+                <div class="content">
+                    <h2>#5: Error Prevention</h2>
+                    <p>Even better than good error messages is a careful design which prevents a problem from occurring in the first place. Either eliminate error-prone conditions or check for them and present users with a confirmation option before they commit to the action.</p>
+                </div>
+            </article>
+
+            <article class="checklist-item" id="5">
+                <div class="checkbox"></div>
+                <div class="content">
+                    <h2>#6: Recognition rather than recall</h2>
+                    <p>Minimize the user's memory load by making objects, actions, and options visible. The user should not have to remember information from one part of the dialogue to another. Instructions for use of the system should be visible or easily retrievable whenever appropriate.</p>
+                </div>
+            </article>
+
+            <article class="checklist-item" id="6">
+                <div class="checkbox"></div>
+                <div class="content">
+                    <h2>#7: Flexibility and efficiency of use</h2>
+                    <p>Accelerators — unseen by the novice user — may often speed up the interaction for the expert user such that the system can cater to both inexperienced and experienced users. Allow users to tailor frequent actions.</p>
+                </div>
+            </article>
+
+            <article class="checklist-item" id="7">
+                <div class="checkbox"></div>
+                <div class="content">
+                    <h2>#8: Aesthetic and minimalist design</h2>
+                    <p>Dialogues should not contain information which is irrelevant or rarely needed. Every extra unit of information in a dialogue competes with the relevant units of information and diminishes their relative visibility.</p>
+                </div>
+            </article>
+
+            <article class="checklist-item" id="8">
+                <div class="checkbox"></div>
+                <div class="content">
+                    <h2>#9: Help users recognize, diagnose, and recover from errors</h2>
+                    <p>Error messages should be expressed in plain language (no codes), precisely indicate the problem, and constructively suggest a solution.</p>
+                </div>
+            </article>
+
+            <article class="checklist-item" id="9">
+                <div class="checkbox"></div>
+                <div class="content">
+                    <h2>#10: Help and documentation</h2>
+                    <p>Even though it is better if the system can be used without documentation, it may be necessary to provide help and documentation. Any such information should be easy to search, focused on the user's task, list concrete steps to be carried out, and not be too large.</p>
+                </div>
+            </article>
+        </section>
+
+        <section class="description">
+            <h1>☑️ Usability Checklist &mdash; 10 Heuristics for User Interface Design</h1>
+            <h2>What is this?</h2>
+            <p>This tool is built around Jakob Nielsen's 10 general principles for interaction design. These heuristics are broad rules of thumb that can be applied to interaction design projects to locate potential areas for improvement.</p>
+            
+            <h2>Cool &mdash; now how do I use it?</h2>
+            <p>You can use this tool as a checklist for your project to iteratively check each of the guidelines. Click on the cards once to flag them as <code class="needs-work">needs-work</code>, click on them twice to mark them as <code class="complete">complete</code>.</p>
+            
+            <h2>Credit and References</h2>
+            <p class="smaller">The content displayed on this page is courtesy of the <a href="https://nngroup.com/" target="_blank">Nielsen Norman Group</a>, and was first published online as <a href="https://pdfs.semanticscholar.org/5f03/b251093aee730ab9772db2e1a8a7eb8522cb.pdf" target="_blank">Nielsen, J. (2005). Ten usability heuristics</a>.</p>
+            <p class="smaller">This project was created in 2019 by <a href="https://arthurgeel.com/" target="_blank">Arthur Geel</a>.</p>
+        </section>
+    </div>
+
+    <script>
+    // Stores checklist values 
+    var checklistValues = [];
+    var numberOfHeuristics = 10;
+    for (var i = 0; i < numberOfHeuristics; i++) {
+        checklistValues.push(false);
+    }
+
+    // Modal operation
+    var modal = document.getElementById("myModal");
+    var closeModal = document.getElementsByClassName("close")[0];
+    closeModal.onclick = function() {
+        displayModal();
+    }
+
+    function displayModal() {
+        modal.style.display = "block";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+
+    document.querySelectorAll('.checklist-item').forEach(item => {
+        item.addEventListener('click', event => {
+
+            // console.log(item.id);
+
+            if (item.classList.contains('needs-work')) {
+                // console.log("Class has needs-work");
+                item.classList.remove('needs-work');
+                item.classList.add('complete');
+                // console.log(checklistValues[item.id]);
+                checklistValues[item.id] = true;
+                // console.log(checklistValues[item.id]);
+
+                if (checklistValues.includes(false) != true) {
+                    displayModal();
+                }
+
+            } else if (item.classList.contains('complete')) {
+                // console.log("Class has complete tag");
+                item.classList.remove('complete');
+                checklistValues[item.id] = false;
+
+            } else {
+                // console.log("Class has no tag");
+                item.classList.add('needs-work');
+                checklistValues[item.id] = false;
+
+            }
+        })
+    })
+
+    </script>
+
+</body>
+</html>
