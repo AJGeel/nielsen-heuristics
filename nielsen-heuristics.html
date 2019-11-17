@@ -27,7 +27,9 @@
     }
 
     body{
-        background-color: #eef0f6;
+        background-color: #eef0f6; /* Fallback for non-modern browsers */
+        background: linear-gradient(#eef0f6, #c9d4f3);
+        background-attachment: fixed;
         font-family: "Poppins", sans-serif;
 
         animation: fadeIn 1s ease-in-out;
@@ -235,7 +237,7 @@
         <span class="close">&times;</span>
         <p>Some text in the Modal..</p>
         </div>
-    
+
     </div>
 
     <div class="wrapper">
@@ -326,10 +328,10 @@
             <h1>☑️ Usability Checklist &mdash; 10 Heuristics for User Interface Design</h1>
             <h2>What is this?</h2>
             <p>This tool is built around Jakob Nielsen's 10 general principles for interaction design. These heuristics are broad rules of thumb that can be applied to interaction design projects to locate potential areas for improvement.</p>
-            
+
             <h2>Cool &mdash; now how do I use it?</h2>
             <p>You can use this tool as a checklist for your project to iteratively check each of the guidelines. Click on the cards once to flag them as <code class="needs-work">needs-work</code>, click on them twice to mark them as <code class="complete">complete</code>.</p>
-            
+
             <h2>Credit and References</h2>
             <p class="smaller">The content displayed on this page is courtesy of the <a href="https://nngroup.com/" target="_blank">Nielsen Norman Group</a>, and was first published online as <a href="https://pdfs.semanticscholar.org/5f03/b251093aee730ab9772db2e1a8a7eb8522cb.pdf" target="_blank">Nielsen, J. (2005). Ten usability heuristics</a>.</p>
             <p class="smaller">This project was created in 2019 by <a href="https://arthurgeel.com/" target="_blank">Arthur Geel</a>.</p>
@@ -337,7 +339,7 @@
     </div>
 
     <script>
-    // Stores checklist values 
+    // Stores checklist values
     var checklistValues = [];
     var numberOfHeuristics = 10;
     for (var i = 0; i < numberOfHeuristics; i++) {
