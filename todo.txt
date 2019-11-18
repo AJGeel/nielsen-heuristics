@@ -2,5 +2,5 @@ To do: 17-11-2019
 
 - Create After Effects animation for logo
 -- Same for Favicon
-- Update lightbox success message / gif
-- Responsive: mobile (<600px) support
+- Further build out the keyboard shortcuts
+- Maybe integrate SweetAlert.JS?

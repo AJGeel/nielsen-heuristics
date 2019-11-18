@@ -1,4 +1,4 @@
-:root{
+:root {
   --blue-main: #002fb1;
   --blue-dark: #2d4486;
 }
@@ -46,11 +46,11 @@
 }
 
 
-::selection{
+::selection {
     background: hsla(230, 100%, 68%, .1);
 }
 
-body{
+body {
     background-color: #eef0f6; /* Fallback for oldschool browsers */
     background: linear-gradient(#eef0f6, #c9d4f3);
     background-attachment: fixed;
@@ -59,18 +59,18 @@ body{
     /* animation: fadeIn 1s ease-in-out; */
 }
 
-.wrapper{
+.wrapper {
     max-width: 60em;
     margin: 0 auto;
     display: flex;
     align-items: flex-start
 }
 
-.wrapper section{
+.wrapper section {
     margin: 0em 1.5em;
 }
 
-.description{
+.description {
     position: -webkit-sticky;
     position: sticky;
     top: 0;
@@ -80,46 +80,71 @@ body{
 
 }
 
-.description h1{
+.description h1 {
     line-height: 1.6;
     font-size: 1.25em;
     font-weight: 600;
-    margin-bottom: 1em;
+    margin-bottom: 1.5em;
     color: var(--blue-main);
 }
 
-.description h1 svg{
+.description h1 svg {
   transform: translateY(4px);
   margin-right: 2px;
   stroke-width: 2.5px;
 }
 
-.description h2{
+.description .progress {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2em;
+}
+
+.description .progress div {
+  width: 10px;
+  height: 10px;
+  border-radius: 9px;
+  border: 1.5px solid var(--blue-main);
+  box-sizing: border-box;
+  transition: background-color .4s ease-in-out, border .4s ease-in-out, box-shadow .4s ease-in-out;
+  box-shadow: 0px 0px 5px rgba(158, 17, 15, 0);
+}
+
+.description .progress div.needs-work {
+  border: 1.5px solid #9c0505;
+  box-shadow: 0px 0px 5px rgba(158, 17, 15, .4);
+}
+
+.description .progress div.complete {
+  background-color: var(--blue-main);
+}
+
+.description h2 {
     font-weight: 600;
     margin-bottom: .25em;
     color: var(--blue-dark);
 }
 
-.description p{
+.description p {
     line-height: 1.6;
     color: rgba(0,0,0,.7);
     margin-bottom: 2em;
 }
 
-.description p.smaller{
+.description p.smaller {
     font-size: .875em;
 }
 
-.description a{
+.description a {
     color: var(--blue-dark);
 }
 
-.description a:hover{
+.description a:hover {
   text-decoration: none;
   color: var(--blue-main);
 }
 
-.description code{
+.description code {
     font-size: .75em;
     padding: .2em .4em;
     margin: 0 .5em;
@@ -130,21 +155,25 @@ body{
     transition: background-color .4s ease-in-out, color .4s ease-in-out;
 }
 
-.description code.needs-work:hover{
+.description code:hover {
+  cursor: not-allowed;
+}
+
+.description code.needs-work:hover {
     background-color: #ffe5e5;
     color: #a91a05;
 }
 
-.description code.complete:hover{
+.description code.complete:hover {
     background-color: #f1f6ff;
     color: #90abde;
     text-decoration: line-through;
 }
 
-.checklist{
+.checklist {
 }
 
-.checklist-item{
+.checklist-item {
     box-sizing: border-box;
     margin-top: 3em;
     background-color: #fff;
@@ -248,29 +277,6 @@ body{
     text-decoration: line-through;
 }
 
-.description .progress {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 1.5em;
-}
-
-.description .progress div {
-  width: 10px;
-  height: 10px;
-  border-radius: 9px;
-  border: 1.5px solid var(--blue-main);
-  box-sizing: border-box;
-  transition: background-color .4s ease-in-out, border .4s ease-in-out;
-}
-
-.description .progress div.needs-work {
-  border: 1.5px solid #9c0505;
-}
-
-.description .progress div.complete {
-  background-color: var(--blue-main);
-}
-
 /* Success modal */
 
 /* The Modal (background) */
@@ -288,27 +294,68 @@ body{
 }
 
 /* Modal Content/Box */
-.modal-content {
-    background-color: #fefefe;
+.modal .modal-content {
+    background-color: #fff;
+    border-radius: 4px;
+    width: 34em;
+    box-shadow: 0px 0px 15px 0 rgba(82,63,105,.05);
     margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.modal .modal-content .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #d7e5ff;
+  padding: 1.5em;
+}
+
+.modal .modal-content .row:last-child {
+  border-bottom: none;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.modal .modal-content .row h1 {
+  line-height: 1.6;
+  font-size: 1.25em;
+  font-weight: 600;
+  color: var(--blue-main);
+  flex-wrap: wrap;
+}
+
+.modal .modal-content .row p {
+  margin-bottom: 1.5em;
+  width: 100%;
+  line-height: 1.6;
+  opacity: .85;
+}
+
+.modal .modal-content .row img {
+  max-width: 100%;
 }
 
 /* The Close Button */
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
+.modal .close {
+    color: var(--blue-main);
+    background-color: #E4E9FD;
     font-weight: bold;
+
+    border-radius: 2px;
+    width: 2em;
+    height: 2em;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: color .4s ease-in-out, background-color .4s ease-in-out;
 }
 
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+.modal .close:hover,
+.modal .close:focus {
+  color: #FFFFFF;
+  background-color: var(--blue-main);
+  cursor: pointer;
 }
 
 @media screen and (max-width: 960px) {
@@ -331,6 +378,10 @@ body{
     position: static;
     max-width: 30em;
     animation: fadeInBottom 750ms ease-in-out;
+  }
+
+  .hide-on-touchscreens {
+    display: none;
   }
 }
 
