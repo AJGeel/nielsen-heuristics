@@ -23,20 +23,28 @@ window.onclick = function(event) {
     }
 }
 
+function checklistStateChangeTo(state) {
+  if (state == 'none') {
+
+  } else if (state == 'needs-work') {
+
+  } else if (state == 'complete') {
+    
+  }
+}
+
 
 /* Select all 'checklist-item' elements, add an eventlistener*/
 document.querySelectorAll('.checklist-item').forEach(item => {
     item.addEventListener('click', event => {
 
-        // console.log(item.id);
-
         if (item.classList.contains('needs-work')) {
-            // console.log("Class has needs-work");
+
             item.classList.remove('needs-work');
             item.classList.add('complete');
-            // console.log(checklistValues[item.id]);
+
             checklistValues[item.id] = true;
-            // console.log(checklistValues[item.id]);
+
 
             if (checklistValues.includes(false) != true) {
                 displayModal();
@@ -56,5 +64,39 @@ document.querySelectorAll('.checklist-item').forEach(item => {
     })
 })
 
+// // START PROGRESS FUNTIONALITY
+// const progress_bar = document.querySelector(".progress");
+//
+// /* Function that updates the progress bar based on heuristics */
+// function changeProgressIndicators(id, state) {
+//   var progress_element = progress_bar.querySelector("div");
+//   progress_element.className = "";
+//   progress_element.classList.add(state);
+// }
+//
+// changeProgressIndicators(1, "needs-work");
+// changeProgressIndicators(1, "complete");
+// // END PROGRESS FUNCTIONALITY
+
 /* Replace all feather icons instances */
 feather.replace()
+
+
+/* Function to create the modal */
+function createModal(type) {
+  // Create a div
+  var modal_wrapper = document.createElement("article");
+
+  // Update its class
+  modal_wrapper.classList.add("modal-wrapper");
+
+  if (type == 'success') {
+    // Set its text
+    modal_wrapper.textContent = "Great success!";
+  } else {
+    modal_wrapper.textContent = "??????!";
+  }
+
+  // Append the element to .container
+  document.querySelector(".wrapper").appendChild(modal_wrapper);
+}

@@ -31,6 +31,20 @@
     }
 }
 
+@keyFrames fadeInBottom_2 {
+    from {
+        transform: translateY(5em);
+        opacity: 0;
+        filter: blur(2px);
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+        filter: blur(0px);
+    }
+}
+
 
 ::selection{
     background: hsla(230, 100%, 68%, .1);
@@ -196,6 +210,7 @@ body{
 .checklist-item.needs-work{
     background-color: #ffe5e5;
     border-left: 6px solid #eac3c3;
+    box-shadow: 0px 0px 13px 0 hsla(0, 85%, 63%, 0.19);
 }
 
 .checklist-item.needs-work:hover{
@@ -217,6 +232,10 @@ body{
     background-color: #f1f6ff;
 }
 
+.checklist-item.complete .content{
+  filter: blur(1px);
+}
+
 .checklist-item.complete h2{
     text-decoration: line-through;
     color: #90abde !important;
@@ -227,6 +246,29 @@ body{
     /* display: none; */
     color: #abbee2;
     text-decoration: line-through;
+}
+
+.description .progress {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5em;
+}
+
+.description .progress div {
+  width: 10px;
+  height: 10px;
+  border-radius: 9px;
+  border: 1.5px solid var(--blue-main);
+  box-sizing: border-box;
+  transition: background-color .4s ease-in-out, border .4s ease-in-out;
+}
+
+.description .progress div.needs-work {
+  border: 1.5px solid #9c0505;
+}
+
+.description .progress div.complete {
+  background-color: var(--blue-main);
 }
 
 /* Success modal */
@@ -281,9 +323,14 @@ body{
     align-items: center;
   }
 
-  .description{
+  .checklist-item {
+    animation: fadeInBottom_2 750ms ease-in-out;
+  }
+
+  .description {
     position: static;
     max-width: 30em;
+    animation: fadeInBottom 750ms ease-in-out;
   }
 }
 
