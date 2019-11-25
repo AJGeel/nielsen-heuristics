@@ -59,6 +59,33 @@ body {
     /* animation: fadeIn 1s ease-in-out; */
 }
 
+.pro-tools-menu {
+  position: fixed;
+  bottom: 1em;
+  left: 1em;
+  font-size: .9em;
+  opacity: .2;
+  transition: opacity .3s ease-in-out;
+}
+
+.pro-tools-menu:hover {
+  opacity: 1;
+}
+
+.pro-tools-menu p {
+  padding-bottom: .2em;
+}
+
+.pro-tools-menu a {
+  color: var(--blue-dark);
+  font-size: .8em;
+}
+
+.pro-tools-menu a:hover {
+  text-decoration: none;
+  color: var(--blue-main);
+}
+
 .wrapper {
     max-width: 60em;
     margin: 0 auto;

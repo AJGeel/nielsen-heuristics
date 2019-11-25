@@ -163,6 +163,8 @@ document.addEventListener("keypress", function(event) {
       changeChecklistItems(i, 'complete');
       displayModal();
     }
+  } else if (event.keyCode == 113 || event.keyCode == 81) {
+    window.location.href = "../";
   }
 });
 
