@@ -1,6 +1,8 @@
 :root {
   --blue-main: #002fb1;
   --blue-dark: #2d4486;
+  --green-main: hsla(170, 100%, 28%, 1);
+  --green-dark: hsla(170, 75%, 24%, 1);
 }
 
 @keyframes fadeInBottom {
@@ -47,12 +49,12 @@
 
 
 ::selection {
-    background: hsla(230, 100%, 68%, .1);
+    background: hsla(177, 100%, 68%, .1);
 }
 
 body {
-    background-color: #eef0f6; /* Fallback for oldschool browsers */
-    background: linear-gradient(#eef0f6, #c9d4f3);
+    background-color: hsla(177, 24%, 82%, 1); /* Fallback for oldschool browsers */
+    background: linear-gradient(hsla(177, 31%, 95%, 1), hsla(177, 24%, 75%, 1));
     background-attachment: fixed;
     font-family: "Poppins", sans-serif;
 
@@ -77,13 +79,13 @@ body {
 }
 
 .pro-tools-menu a {
-  color: var(--blue-dark);
+  color: var(--green-dark);
   font-size: .8em;
 }
 
 .pro-tools-menu a:hover {
   text-decoration: none;
-  color: var(--blue-main);
+  color: var(--green-main);
 }
 
 .wrapper {
@@ -112,7 +114,7 @@ body {
     font-size: 1.25em;
     font-weight: 600;
     margin-bottom: 1.5em;
-    color: var(--blue-main);
+    color: var(--green-main);
 }
 
 .description h1 svg {
@@ -131,7 +133,7 @@ body {
   width: 10px;
   height: 10px;
   border-radius: 9px;
-  border: 1.5px solid var(--blue-main);
+  border: 1.5px solid var(--green-main);
   box-sizing: border-box;
   transition: background-color .4s ease-in-out, border .4s ease-in-out, box-shadow .4s ease-in-out;
   box-shadow: 0px 0px 5px rgba(158, 17, 15, 0);
@@ -143,13 +145,13 @@ body {
 }
 
 .description .progress div.complete {
-  background-color: var(--blue-main);
+  background-color: var(--green-main);
 }
 
 .description h2 {
     font-weight: 600;
     margin-bottom: .25em;
-    color: var(--blue-dark);
+    color: var(--green-dark);
 }
 
 .description p {
@@ -163,12 +165,12 @@ body {
 }
 
 .description a {
-    color: var(--blue-dark);
+    color: var(--green-dark);
 }
 
 .description a:hover {
   text-decoration: none;
-  color: var(--blue-main);
+  color: var(--green-main);
 }
 
 .description code {
@@ -177,7 +179,7 @@ body {
     margin: 0 .5em;
     border-radius: 3px;
     background-color: #fff;
-    color: #274e98;
+    color: hsla(170, 59%, 37%, 1);
 
     transition: background-color .4s ease-in-out, color .4s ease-in-out;
 }
@@ -223,13 +225,13 @@ body {
 
 .checklist-item:hover{
     /* transform: translateY(-.5em); */
-    box-shadow: 0px 10px 30px 0 hsla(224, 99%, 35%, .3);
+    box-shadow: 0px 10px 30px 0 hsla(170, 99%, 35%, .3);
     cursor: pointer;
 }
 
 .checklist-item:hover .content h2{
-  color: var(--blue-main);
-  border-bottom: 1px solid #cad8ff;
+  color: var(--green-main);
+  border-bottom: 1px solid hsla(170, 30%, 50%, .3);
 }
 
 .checklist-item:active{
@@ -284,8 +286,8 @@ body {
 }
 
 .checklist-item.complete{
-    border-left: 6px solid #dbe4ff;
-    background-color: #f1f6ff;
+    border-left: 6px solid hsla(170, 100%, 93%, 1);
+    background-color: hsla(170, 100%, 97%, 1);
 }
 
 .checklist-item.complete .content{
@@ -294,13 +296,13 @@ body {
 
 .checklist-item.complete h2{
     text-decoration: line-through;
-    color: #90abde !important;
-    border-bottom: 1px solid #d7e5ff !important;
+    color: hsla(170, 99%, 28%, .4) !important;
+    border-bottom: 1px solid hsla(170, 50%, 62%, .4) !important;
 }
 
 .checklist-item.complete p{
     /* display: none; */
-    color: #abbee2;
+    color: hsla(170, 49%, 78%, 1);
     text-decoration: line-through;
 }
 
@@ -347,7 +349,7 @@ body {
   line-height: 1.6;
   font-size: 1.25em;
   font-weight: 600;
-  color: var(--blue-main);
+  color: var(--green-main);
   flex-wrap: wrap;
 }
 
@@ -364,7 +366,7 @@ body {
 
 /* The Close Button */
 .modal .close {
-    color: var(--blue-main);
+    color: var(--green-main);
     background-color: #E4E9FD;
     font-weight: bold;
 
@@ -381,7 +383,7 @@ body {
 .modal .close:hover,
 .modal .close:focus {
   color: #FFFFFF;
-  background-color: var(--blue-main);
+  background-color: var(--green-main);
   cursor: pointer;
 }
 
